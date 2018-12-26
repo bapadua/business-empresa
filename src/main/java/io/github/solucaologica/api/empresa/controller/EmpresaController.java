@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.github.solucaologica.api.core.dto.EmpresaDTO;
-import io.github.solucaologica.api.core.entities.Empresa;
 import io.github.solucaologica.api.core.mapper.EmpresaMapper;
 import io.github.solucaologica.api.core.repository.EmpresaRepository;
 import io.github.solucaologica.api.core.response.Response;
@@ -27,6 +27,7 @@ public class EmpresaController {
 	private EmpresaMapper empresaMapper;
 	
 	@PostMapping(value = "/create")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public ResponseEntity<Response<EmpresaDTO>> cadastrar(@Valid @RequestBody EmpresaDTO empresadto, BindingResult result) {
 		Response<EmpresaDTO> response = new Response<EmpresaDTO>();
 		if(result.hasErrors()) {
