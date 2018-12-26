@@ -1,4 +1,4 @@
-package io.github.solucaologica.api.core;
+package io.github.solucaologica.api.empresa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
