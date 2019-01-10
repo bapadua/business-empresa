@@ -26,7 +26,6 @@ public class EmpresaController {
 	private EmpresaMapper empresaMapper;
 	
 	@PostMapping(value = "/create")
-//	@PreAuthorize("hasAnyRole('ADMIN')")
 	public ResponseEntity<Response<EmpresaDTO>> cadastrar(@Valid @RequestBody EmpresaDTO empresadto, BindingResult result) {
 		Response<EmpresaDTO> response = new Response<EmpresaDTO>();
 		if(result.hasErrors()) {
